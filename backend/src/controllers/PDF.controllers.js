@@ -61,6 +61,9 @@ const AddPDFtoUploadThings = asyncHandler(async (req, res) => {
         owner: req.user._id
     })
 
+    console.log("PDF SUMMARY: ", pdfSummary);
+    
+
     const createdPdfSummary = await PDF.findById(pdfSummary._id)
 
     if (!createdPdfSummary) {
