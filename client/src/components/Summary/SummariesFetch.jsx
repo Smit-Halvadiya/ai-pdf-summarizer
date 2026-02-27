@@ -2,6 +2,7 @@ import axios from "axios"
 import { FileText, Trash2 } from "lucide-react";
 import React, { useEffect, useState } from "react";
 import { useNavigate } from "react-router-dom";
+import api from "../../utils/api";
 
 const SummariesFetch = ({ summaries, setSummaries, summaryId, setSummaryId }) => {
     const [refresh, setRefresh] = useState(false);
@@ -12,7 +13,7 @@ const SummariesFetch = ({ summaries, setSummaries, summaryId, setSummaryId }) =>
     useEffect(() => {
         setRefresh(false)
         const fetchData = async () => {
-            const res = await axios.get("http://localhost:5000/api/v1/summary/");
+            const res = await api.get("/api/v1/summary/");
             setSummaries(res.data.data);
         };
         fetchData();
@@ -30,8 +31,8 @@ const SummariesFetch = ({ summaries, setSummaries, summaryId, setSummaryId }) =>
     const deleteSummary = async (summaryId) => {
         try {
 
-            await axios.delete(
-                "http://localhost:5000/api/v1/summary/deleteSummary",
+            await api.delete(
+                "/api/v1/summary/deleteSummary",
                 {
                     headers: {
                         "Content-Type": "application/json",
