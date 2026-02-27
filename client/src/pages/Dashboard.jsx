@@ -60,7 +60,7 @@ const Dashboard = () => {
 
 
             {
-              (summaries.length < 5) &&
+              // (summaries.length < 5) &&
               <a
                 href="/upload-pdf"
                 className="inline-block text-center mb-3 rounded-md bg-blue-600 px-4 py-2 text-sm font-medium text-white 
