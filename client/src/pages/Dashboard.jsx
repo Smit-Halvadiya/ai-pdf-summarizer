@@ -13,7 +13,7 @@ const Dashboard = () => {
   useEffect(() => {
     const fetchData = async () => {
       const res = await api.get(
-        "/summaries/",
+        "/summary/",
         {
           headers: {
             "Content-Type": "multipart/form-data",
