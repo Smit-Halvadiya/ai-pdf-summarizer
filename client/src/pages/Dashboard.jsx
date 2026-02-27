@@ -30,7 +30,7 @@ const Dashboard = () => {
 
 
 
-    
+
   }, [])
 
 
@@ -45,41 +45,59 @@ const Dashboard = () => {
 
   return (
     <>
-      <div className="min-h-screen   flex flex-col  mx-auto 
+      <div className="min-h-screen flex flex-col mx-auto 
     bg-gradient-to-br from-purple-200 via-indigo-50 to-white">
 
-        <div className="pt-28 px-4 md:pt-40 sm:px-6 lg:px-8 flex flex-col max-w-7xl min-w-3xl mx-auto">
-          {/* Title */}
-          <div className="flex flex-col sm:flex-row sm:items-center sm:justify-between ">
-            <div className="mb-6">
-              <h1 className="text-2xl sm:text-3xl font-bold mb-1">Your Summaries</h1>
-              <p className="text-gray-700 text-sm sm:text-base">
+        <div className="pt-24 sm:pt-28 md:pt-36 
+                  px-4 sm:px-6 lg:px-8 
+                  flex flex-col 
+                  w-full max-w-7xl 
+                  mx-auto">
+
+          {/* Title Section */}
+          <div className="flex flex-col sm:flex-row 
+                    sm:items-center sm:justify-between 
+                    gap-4 sm:gap-6">
+
+            <div className="mb-4 sm:mb-6">
+              <h1 className="text-xl sm:text-3xl font-bold mb-1">
+                Your Summaries
+              </h1>
+
+              <p className="text-gray-700 text-sm sm:text-base max-w-md">
                 Transform your PDFs into concise, actionable insights
               </p>
             </div>
 
-
             {
-              // (summaries.length < 5) &&
               <a
                 href="/upload-pdf"
-                className="inline-block text-center mb-3 rounded-md bg-blue-600 px-4 py-2 text-sm font-medium text-white 
-             hover:bg-blue-700 transition-colors 
-             sm:px-5 sm:py-2 sm:text-base 
-             md:px-5 md:py-2.5 md:text-md"
+                className="inline-block text-center 
+                     w-full sm:w-auto 
+                     rounded-md bg-blue-600 
+                     px-4 py-2 text-sm font-medium text-white 
+                     hover:bg-blue-700 transition-colors 
+                     sm:px-5 sm:py-2 sm:text-base 
+                     md:px-5 md:py-2.5 md:text-md"
               >
                 Add Summary
               </a>
             }
 
           </div>
-          {/* Alert */}
-          
 
           {/* Summaries Grid */}
-          {(summaries.length == 0) ? <SummaryNotAvailable /> : <SummariesFetch summaries={summaries} setSummaries={setSummaries} summaryId={summaryId} setSummaryId={setSummaryId} />}
-
-
+          <div className="mt-6 w-full">
+            {(summaries.length == 0)
+              ? <SummaryNotAvailable />
+              : <SummariesFetch
+                summaries={summaries}
+                setSummaries={setSummaries}
+                summaryId={summaryId}
+                setSummaryId={setSummaryId}
+              />
+            }
+          </div>
 
         </div>
       </div>

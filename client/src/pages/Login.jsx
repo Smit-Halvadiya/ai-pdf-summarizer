@@ -5,9 +5,9 @@ import { Mail, Lock, Loader2 } from "lucide-react";
 import { Link } from "react-router-dom";
 
 const Login = () => {
-  const { user,login } = useAuth();
+  const { user, login } = useAuth();
   const navigate = useNavigate();
-  
+
 
   const [email, setEmail] = useState("");
   const [password, setPassword] = useState("");

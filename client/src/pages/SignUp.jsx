@@ -1,4 +1,4 @@
-import React, { useState,useEffect } from "react";
+import React, { useState, useEffect } from "react";
 import { useNavigate, Link } from "react-router-dom";
 import api from "../utils/api"; // axios instance
 import { useAuth } from "../context/AuthContext";
@@ -16,10 +16,10 @@ const Signup = () => {
   const [loading, setLoading] = useState(false);
 
   useEffect(() => {
-      if (user) {
-        navigate("/dashboard");
-      }
-    }, [user, navigate]);
+    if (user) {
+      navigate("/dashboard");
+    }
+  }, [user, navigate]);
 
   const handleChange = (e) => {
     setFormData({
@@ -49,9 +49,9 @@ const Signup = () => {
 
   return (
     <div className="min-h-screen flex items-center justify-center bg-gradient-to-br from-indigo-50 to-purple-50 pt-24 px-4">
-      
+
       <div className="w-full max-w-md bg-white rounded-2xl shadow-xl p-8">
-        
+
         {/* Title */}
         <h2 className="text-2xl font-bold text-center text-gray-800 mb-2">
           Create Account

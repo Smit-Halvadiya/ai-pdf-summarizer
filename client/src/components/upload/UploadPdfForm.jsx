@@ -7,7 +7,7 @@ import { useAuth } from "../../context/AuthContext.jsx";
 import { useNavigate } from "react-router-dom";
 
 const UploadPdfForm = () => {
-    const {user} = useAuth()
+    const { user } = useAuth()
     const [file, setFile] = useState(null);
     const [fieError, setFileError] = useState(null);
     // const [summaryData, setSummaryData] = useState(null)
@@ -16,14 +16,14 @@ const UploadPdfForm = () => {
 
 
     const handleSubmit = async (e) => {
-        
-        
-        if(!user){
+
+
+        if (!user) {
             navigate("/login")
         }
         e.preventDefault()
-        
-        
+
+
         setIsLoading(true)
 
         if (!file) {
@@ -35,7 +35,7 @@ const UploadPdfForm = () => {
             setFileError("")
         }
 
-        
+
 
 
         if (!(file.type == "application/pdf")) {
@@ -48,11 +48,11 @@ const UploadPdfForm = () => {
         }
         console.log("file: ", file);
         try {
-            
+
             const formData = new FormData();
             formData.append("file", file); // backend me "pdf" name ka field hona chahiye
-            console.log("FormDaata: ",formData);
-            
+            // console.log("FormDaata: ",formData);
+
             await api.post(
                 "/pdf/addPDFtoServer",
                 formData,
@@ -62,9 +62,9 @@ const UploadPdfForm = () => {
                     },
                 }
             );
-            console.log("pochyu");
+
             setIsLoading(false)
-            
+
 
 
 
@@ -84,41 +84,44 @@ const UploadPdfForm = () => {
 
     return (
         <>
-            <form onSubmit={handleSubmit}>
+            <form onSubmit={handleSubmit} className="w-full">
+                <div className="flex flex-col sm:flex-row items-center justify-center gap-3 w-full">
 
-                <div className=" flex items-center justify-center gap-2">
-                    <div>
+                    <div className="w-full sm:w-auto">
                         <input
-                            className="border border-gray-300 cursor-pointer px-2 py-2 text-sm text-gray-700 rounded-sm w-full sm:w-auto sm:pr-40 mb-2 sm:mb-0"
+                            className="border border-gray-300 cursor-pointer 
+                   px-3 py-2 text-sm text-gray-700 
+                   rounded-sm 
+                   w-full sm:w-auto sm:min-w-[260px] 
+                   mb-0"
                             type="file"
                             onChange={(e) => setFile(e.target.files[0])}
                             accept="application/pdf"
-                     
                         />
                     </div>
 
-
-                    <div className=''>
+                    <div className="w-full sm:w-auto">
                         <button
-                            className="px-9 cursor-pointer bg-purple-500 text-white py-2 font-semibold rounded-sm w-full min-w-[150px] sm:w-auto"
+                            className="px-9 cursor-pointer bg-purple-500 text-white 
+                   py-2 font-semibold rounded-sm 
+                   w-full sm:w-auto min-w-[150px] 
+                   hover:bg-purple-600 transition"
                             type="submit"
-                            disabled={(isLoading || !file)}
+                            disabled={isLoading || !file}
                         >
-                       
                             {isLoading ? "uploading..." : "Submit PDF"}
-
-
                         </button>
                     </div>
-                    <div>
-                        <span>{fieError}</span>
+
+                    <div className="w-full text-center sm:text-left">
+                        <span className="text-red-500 text-sm">
+                            {fieError}
+                        </span>
                     </div>
 
-
                 </div>
-
             </form>
-           
+
         </>
     )
 }
