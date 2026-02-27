@@ -13,7 +13,7 @@ const SummariesFetch = ({ summaries, setSummaries, summaryId, setSummaryId }) =>
     useEffect(() => {
         setRefresh(false)
         const fetchData = async () => {
-            const res = await api.get("/api/v1/summary/");
+            const res = await api.get("/summary/");
             setSummaries(res.data.data);
         };
         fetchData();
@@ -32,7 +32,7 @@ const SummariesFetch = ({ summaries, setSummaries, summaryId, setSummaryId }) =>
         try {
 
             await api.delete(
-                "/api/v1/summary/deleteSummary",
+                "/summary/deleteSummary",
                 {
                     headers: {
                         "Content-Type": "application/json",
