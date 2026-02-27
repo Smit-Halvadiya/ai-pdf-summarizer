@@ -74,16 +74,7 @@ const Dashboard = () => {
 
           </div>
           {/* Alert */}
-          {
-            (summaries.length >= 5) &&
-            <div className="alertLine mb-6 border border-red-300 rounded-md text-red-700 bg-red-100 py-3 px-4 text-sm">
-              You reached the limit of <b>5 uploads</b> on the Basic plan.{" "}
-              <a className="underline font-medium" href="#pricing">
-                Click here to Upgrade to Pro ↗️
-              </a>{" "}
-              for unlimited uploads.
-            </div>
-          }
+          
 
           {/* Summaries Grid */}
           {(summaries.length == 0) ? <SummaryNotAvailable /> : <SummariesFetch summaries={summaries} setSummaries={setSummaries} summaryId={summaryId} setSummaryId={setSummaryId} />}
