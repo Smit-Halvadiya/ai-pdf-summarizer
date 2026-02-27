@@ -36,7 +36,7 @@ app.use("/api/v1/pdf", AddPDFtoUploadThings)
 app.use("/api/v1/user", user)
 
 
-app.use("/api/v1/summaries", summary)
+app.use("/api/v1/summary", summary)
 
 
 export { app }
